@@ -1,17 +1,20 @@
 <template>
-  <div>
-    <h1>Home Page</h1>
-  </div>
+  <v-container>
+    <v-row class="text-center">
+      <v-col class="mb-4">
+        <h1 class="display-2 font-weight-bold mb-3">
+          Welcome to Sistema de Ponto WEB
+        </h1>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
 export default {
   components: {},
   data() {
-    return {
-      email: null,
-      senha: null,
-    };
+    return {};
   },
   methods: {},
 };

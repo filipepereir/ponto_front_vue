@@ -5,7 +5,7 @@ import PrimeVue from 'primevue/config';
 import {
     routes
 } from './router/routes';
-import userStore from './store/UserStore';
+import constants from './store/Constants';
 import vuetify from './plugins/vuetify'
 
 Vue.use(VueRouter);
@@ -19,7 +19,7 @@ router.beforeEach((to, from, next) => {
     if (to.name && to.name == "Login") next();
 
     try {
-        const isLogado = userStore().isLogado();
+        const isLogado = constants().isLogado();
         if (isLogado) next();
         else throw "error"
     } catch (e) {

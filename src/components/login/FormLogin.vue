@@ -3,6 +3,13 @@
     <v-spacer></v-spacer>
 
     <div class="form-login">
+      <v-row v-if="alerta" class="text-center">
+        <v-col class="mb-4">
+          <span class="alerta">
+            <strong>Atenção</strong> usuário ou senha inválidos</span
+          >
+        </v-col>
+      </v-row>
       <v-row>
         <v-col cols="12">
           <v-text-field
@@ -36,23 +43,40 @@
 </template>
 
 <script>
+import constants from "../../store/Constants";
+import axios from "axios";
+
 export default {
   name: "FormLogin",
 
   data: () => ({
     usuario: "",
     senha: "",
+    alerta: false,
   }),
   methods: {
     login() {
       const vm = this;
+
+      localStorage.clear();
 
       const login = {
         email: vm.usuario,
         senha: vm.senha,
       };
 
-      console.log(JSON.stringify(login));
+      axios
+        .post(constants().getUrl() + "auth", login)
+        .then((response) => {
+          constants().persist(response.data);
+          vm.$router.push("/home");
+        })
+        .catch((error) => {
+          if (error.response.status == 401) {
+            vm.alerta = true;
+          }
+        })
+        .finally(function () {});
     },
   },
 };
@@ -72,5 +96,9 @@ export default {
 
 .center {
   text-align: center;
+}
+
+.alerta {
+  color: red;
 }
 </style>

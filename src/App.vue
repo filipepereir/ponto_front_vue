@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar v-if="logado" app color="primary" dark>
+    <v-app-bar v-if="true" app color="primary" dark>
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
@@ -23,7 +23,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn text>
+      <v-btn @click="sair()" text>
         <span class="mr-2">Sair</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import userStore from "./store/UserStore";
 export default {
   name: "App",
 
@@ -45,9 +44,13 @@ export default {
   data: () => ({
     logado: false,
   }),
-  beforeCreate() {
-    const vm = this;
-    vm.logado = userStore().isLogado();
+  methods: {
+    sair() {
+      const vm = this;
+      localStorage.clear();
+
+      vm.$router.push("/login");
+    },
   },
 };
 </script>
