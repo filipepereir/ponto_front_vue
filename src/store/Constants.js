@@ -30,12 +30,17 @@ function limparStorage() {
   localStorage.clear();
 }
 
+function getToken() {
+  return "Bearer " + getUsuarioLogado().token;
+}
+
 export default () => {
   return {
     persist,
     getUsuarioLogado,
     isLogado,
     getUrl,
-    limparStorage
+    limparStorage,
+    getToken
   };
 };

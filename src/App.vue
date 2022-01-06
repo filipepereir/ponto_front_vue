@@ -1,26 +1,6 @@
 <template>
   <v-app>
     <v-app-bar v-if="true" app color="primary" dark>
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
       <v-spacer></v-spacer>
 
       <v-btn @click="sair()" text>
@@ -54,3 +34,23 @@ export default {
   },
 };
 </script>
+<style scoped>
+.sidebar {
+  color: white;
+  background-color: #2f855a;
+  width: 200px;
+
+  float: left;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 0.5em;
+
+  transition: 0.3 ease;
+
+  display: flex;
+  flex-direction: column;
+}
+</style>

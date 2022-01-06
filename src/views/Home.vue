@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="conteudo">
     <v-row class="text-center">
       <v-col class="mb-4">
         <h1 class="display-2 font-weight-bold mb-3">
@@ -7,18 +7,28 @@
         </h1>
       </v-col>
     </v-row>
+    <v-spacer></v-spacer>
+    <RegistrarPonto />
   </v-container>
 </template>
 
 <script>
+import RegistrarPonto from "../components/ponto/RegistrarPonto.vue";
 export default {
-  components: {},
+  components: {
+    RegistrarPonto,
+  },
   data() {
-    return {};
+    return {
+      data: "",
+    };
   },
   methods: {},
 };
 </script>
 
 <style>
+.conteudo {
+  background-color: #fff;
+}
 </style>
