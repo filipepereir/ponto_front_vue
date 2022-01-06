@@ -58,8 +58,6 @@ export default {
     login() {
       const vm = this;
 
-      localStorage.clear();
-
       const login = {
         email: vm.usuario,
         senha: vm.senha,
@@ -74,10 +72,19 @@ export default {
         .catch((error) => {
           if (error.response.status == 401) {
             vm.alerta = true;
+
+            let delay = 2500;
+            setTimeout(() => {
+              vm.alerta = false;
+            }, delay);
           }
         })
         .finally(function () {});
     },
+  },
+
+  created() {
+    constants().limparStorage();
   },
 };
 </script>

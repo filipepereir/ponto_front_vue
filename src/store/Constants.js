@@ -26,11 +26,16 @@ function getUrl() {
   return "http://localhost:8080/ponto/";
 }
 
+function limparStorage() {
+  localStorage.clear();
+}
+
 export default () => {
   return {
     persist,
     getUsuarioLogado,
     isLogado,
-    getUrl
+    getUrl,
+    limparStorage
   };
 };
