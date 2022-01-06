@@ -23,7 +23,6 @@ router.beforeEach((to, from, next) => {
         if (isLogado) next();
         else throw "error"
     } catch (e) {
-        console.log("redirecionando para login")
         next({
             name: "Login"
         })
