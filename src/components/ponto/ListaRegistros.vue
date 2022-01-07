@@ -25,6 +25,9 @@
         :events="events"
         :event-overlap-mode="mode"
         :event-overlap-threshold="30"
+        locale="pt-BR"
+        @click:more="view"
+        @click:date="view"
       ></v-calendar>
     </v-sheet>
   </div>
@@ -36,6 +39,9 @@ import constants from "../../store/Constants";
 export default {
   data: () => {
     return {
+      batidas: [],
+      batida: "",
+      date: "",
       registros: [],
       type: "month",
       types: ["month", "week", "day", "4day"],
@@ -72,6 +78,30 @@ export default {
     };
   },
   methods: {
+    view({ date }) {
+      const vm = this;
+      vm.date = date;
+      vm.buscarBatidas();
+    },
+    buscarBatidas() {
+      const vm = this;
+
+      axios
+        .get(constants().getUrl() + "registro?data=" + vm.date, {
+          headers: {
+            Authorization: constants().getToken(),
+            "content-type": "application/json",
+          },
+        })
+        .then((response) => {
+          vm.batidas = response.data;
+          console.log(vm.batidas);
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        })
+        .finally(function () {});
+    },
     buscarRegistros() {
       const vm = this;
 
@@ -106,7 +136,7 @@ export default {
         const event = {
           color: vm.colors[cont],
           end: data,
-          name: registro.dataHoraRegistro,
+          name: "Registros " + registro.dataBatida,
           start: data,
           timed: true,
         };
