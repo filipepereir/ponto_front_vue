@@ -1,5 +1,10 @@
 <template>
   <div class="registrar">
+    <v-row class="text-center">
+      <v-col>
+        <h1>Registrar Ponto</h1>
+      </v-col>
+    </v-row>
     <v-row v-if="alerta" class="text-center">
       <v-col class="mb-4">
         <span class="alerta"> <strong>Atenção</strong> {{ mensagemErro }}</span>
@@ -153,9 +158,6 @@ export default {
 
 .data {
   font-size: 25px;
-}
-.registrar {
-  margin-top: 100px;
 }
 .sucesso {
   color: green;

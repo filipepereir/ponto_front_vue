@@ -1,7 +1,6 @@
-
 import Login from "../views/Login.vue"
 import Home from "../views/Home.vue"
-import App from "../App.vue"
+import Registros from "../views/Registros.vue"
 
 export const routes = [{
     path: "/login",
@@ -14,8 +13,8 @@ export const routes = [{
     component: Home,
   },
   {
-    path: "/",
-    name: "App",
-    component: App,
+    path: "/registros",
+    name: "Registros",
+    component: Registros,
   },
 ];

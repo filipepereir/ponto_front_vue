@@ -1,22 +1,17 @@
 <template>
-  <v-container class="conteudo">
-    <v-row class="text-center">
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Sistema de Ponto WEB
-        </h1>
-      </v-col>
-    </v-row>
-    <v-spacer></v-spacer>
+  <div id="home">
+    <Header />
     <RegistrarPonto />
-  </v-container>
+  </div>
 </template>
 
 <script>
 import RegistrarPonto from "../components/ponto/RegistrarPonto.vue";
+import Header from "../components/Header.vue";
 export default {
   components: {
     RegistrarPonto,
+    Header,
   },
   data() {
     return {
@@ -24,11 +19,11 @@ export default {
     };
   },
   methods: {},
+  created() {
+    console.log("CHAMOU HOME");
+  },
 };
 </script>
 
 <style>
-.conteudo {
-  background-color: #fff;
-}
 </style>
