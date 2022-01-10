@@ -81,26 +81,8 @@ export default {
     view({ date }) {
       const vm = this;
       vm.date = date;
-      vm.buscarBatidas();
-    },
-    buscarBatidas() {
-      const vm = this;
 
-      axios
-        .get(constants().getUrl() + "registro?data=" + vm.date, {
-          headers: {
-            Authorization: constants().getToken(),
-            "content-type": "application/json",
-          },
-        })
-        .then((response) => {
-          vm.batidas = response.data;
-          console.log(vm.batidas);
-        })
-        .catch((error) => {
-          console.log(error.response.data);
-        })
-        .finally(function () {});
+      vm.$router.push("/registros/detalhes/" + date);
     },
     buscarRegistros() {
       const vm = this;
